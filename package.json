@@ -1,0 +1,8 @@
+{
+  "name": "yu-production-hub",
+  "version": "1.0.0",
+  "description": "Local ComfyUI studio for images, editing, video and H3 audio-video workflows",
+  "license": "MIT",
+  "scripts": {"start":"node server.cjs"},
+  "engines": {"node":">=18"}
+}

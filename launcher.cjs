@@ -1,0 +1,4 @@
+const fs=require('fs'),path=require('path'),{spawn}=require('child_process');
+const url='http://127.0.0.1:8900';
+async function ready(){try{return (await(await fetch(url+'/__replica/status',{signal:AbortSignal.timeout(1000)})).json()).version==='yu-local-2';}catch{return false;}}
+(async()=>{if(!await ready()){const dir=path.join(__dirname,'.replica-tools');fs.mkdirSync(dir,{recursive:true});const log=fs.openSync(path.join(dir,'server.log'),'a');const c=spawn(process.execPath,[path.join(__dirname,'server.cjs')],{cwd:__dirname,windowsHide:true,detached:true,stdio:['ignore',log,log]});c.unref();fs.closeSync(log);for(let i=0;i<30&&!await ready();i++)await new Promise(r=>setTimeout(r,300));}if(!await ready())throw Error('Yu Hub 未启动，请检查 8900 端口是否被旧版占用');spawn('rundll32.exe',['url.dll,FileProtocolHandler',url],{windowsHide:true,stdio:'ignore'}).unref();})().catch(e=>{console.error(e.message);process.exitCode=1;});

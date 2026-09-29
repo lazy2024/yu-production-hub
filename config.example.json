@@ -1,0 +1,4 @@
+{
+  "primary": {"url":"http://127.0.0.1:8188","python":"D:/ComfyUI/python_embeded/python.exe","comfyDir":"D:/ComfyUI/ComfyUI"},
+  "h3": {"url":"http://127.0.0.1:8189","python":"E:/AI-T8/python/python.exe","comfyMain":"E:/AI-T8/ComfyUI/main.py","modelPathsConfig":"E:/AI-T8/extra_model_paths.yaml","runtimeDir":"D:/YuHub/h3-runtime"}
+}
